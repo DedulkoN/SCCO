@@ -30,16 +30,16 @@ create table Assets
 	Info [varchar](128)  NULL
 )
 go
-Create table Movies
+Create table Moves
 (
-MoviesID [smallint] NOT NULL IDENTITY(1,1) PRIMARY KEY,
-NameMovies [varchar](128) Not NULL
+MovesID [smallint] NOT NULL IDENTITY(1,1) PRIMARY KEY,
+NameMoves [varchar](128) Not NULL
 )
 go
-Create table RolesUsers
+Create table RoleUsers
 (
-RolesUsersID [smallint] NOT NULL IDENTITY(1,1) PRIMARY KEY,
-NameRolesUsers [varchar](128) Not NULL
+RoleUserID [smallint] NOT NULL IDENTITY(1,1) PRIMARY KEY,
+NameRoleUser [varchar](128) Not NULL
 )
 go
 Create table Users
@@ -47,16 +47,16 @@ Create table Users
 UsersID [smallint] NOT NULL IDENTITY(1,1) PRIMARY KEY,
 UserLogin [varchar](128) Not NULL,
 UserPassword [varchar](128) Not NULL,
-RolesUser [smallint] REFERENCES RolesUsers(RolesUsersID),
+RolesUser [smallint] REFERENCES RoleUsers(RoleUserID),
 FIO [varchar](128) Not NULL,
 )
 go
 
-Create table MoviesAssets
+Create table MovesAssets
 (
 MoviesAssetsID [smallint] NOT NULL IDENTITY(1,1) PRIMARY KEY,
-Movies [smallint] REFERENCES Movies(MoviesID),
-DateMovies [Date] Not null,
-UserWhyMovie [smallint] REFERENCES Users(UsersID),
+Moves [smallint] REFERENCES Moves(MovesID),
+DateMoves [Date] Not null,
+UserWhyMove [smallint] REFERENCES Users(UsersID),
 Assets [smallint] REFERENCES Assets(AssetsID),
 )
