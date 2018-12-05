@@ -60,11 +60,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassCipler.cs" />
+    <Compile Include="FormAdminPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdminPanel.Designer.cs">
+      <DependentUpon>FormAdminPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCatalog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCatalog.Designer.cs">
+      <DependentUpon>FormCatalog.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMoves.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMoves.Designer.cs">
+      <DependentUpon>FormMoves.cs</DependentUpon>
     </Compile>
     <Compile Include="MsSQLqery.cs" />
     <Compile Include="FormMain.cs">
