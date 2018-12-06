@@ -60,6 +60,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassCipler.cs" />
+    <Compile Include="FormAddAsset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddAsset.Designer.cs">
+      <DependentUpon>FormAddAsset.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAdminPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,12 @@
     <Compile Include="Print.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormAddAsset.resx">
+      <DependentUpon>FormAddAsset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdminPanel.resx">
+      <DependentUpon>FormAdminPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace AcsessSCCO
 {
@@ -24,7 +25,7 @@ namespace AcsessSCCO
             MsQuery.Query = new MsSQLqery(ClassSetting.GetBase());
             MsQuery.Query.TestConnect();
 
-           /* FormLogin FL = new FormLogin();
+            FormLogin FL = new FormLogin();
             if (FL.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 UserRoleID = FL.UserRole;
@@ -36,12 +37,15 @@ namespace AcsessSCCO
 
                 FL.Dispose();
                 Application.Exit();
-            }*/
+            }
+           
+            
 
 
             InitializeComponent();
             LoadData();
             TypeFilter.SelectedIndex = 0;
+            if (UserRoleID != 1) панельАдминистратораToolStripMenuItem.Visible = false;
         }
 
 
@@ -243,7 +247,9 @@ namespace AcsessSCCO
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
-
+            FormAddAsset formAdd = new FormAddAsset();
+            if (formAdd.ShowDialog() == DialogResult.OK)
+                toolStripButtonRefresh_Click(sender, e);
         }
 
         private void toolStripButtonDel_Click(object sender, EventArgs e)
@@ -258,6 +264,51 @@ namespace AcsessSCCO
 
             }
             catch { }
+        }
+
+        private void toolStripButtonMov_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void панельАдминистратораToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAdminPanel FA = new FormAdminPanel();
+            FA.Show();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            string PathDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().ManifestModule.FullyQualifiedName);
+            string PathDirDoc = PathDir + @"\Help.docx";
+            if (System.IO.File.Exists(PathDirDoc))
+            {
+                Word.Application wordapp;
+                wordapp = new Word.Application();
+                wordapp.Visible = true;
+                Object filename = PathDirDoc;
+                Object confirmConversions = Type.Missing;
+                Object readOnly = Type.Missing;
+                Object addToRecentFiles = Type.Missing;
+                Object passwordDocument = Type.Missing;
+                Object passwordTemplate = Type.Missing;
+                Object revert = Type.Missing;
+                Object writePasswordDocument = Type.Missing;
+                Object writePasswordTemplate = Type.Missing;
+                Object format = Type.Missing;
+                Object encoding = Type.Missing;
+                Object visible = Type.Missing;
+                Object openConflictDocument = Type.Missing;
+                Object openAndRepair = Type.Missing;
+                Object documentDirection = Type.Missing;
+                Object noEncodingDialog = Type.Missing;
+
+                wordapp.Documents.Add(ref filename);
+
+                Word.Document document = wordapp.Application.ActiveDocument;
+
+            }
+            else MessageBox.Show("Не найдет файл справки");
         }
     }
 }
