@@ -268,7 +268,16 @@ namespace AcsessSCCO
 
         private void toolStripButtonMov_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (dataGridView1.CurrentCell.RowIndex >= 0)
+                {
+                    int asset = Convert.ToInt32(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells["AssetsID"].Value);
+                    FormMoves form = new FormMoves(UserID, asset);
+                    form.Show();
+                }
+            }
+            catch { }
         }
 
         private void панельАдминистратораToolStripMenuItem_Click(object sender, EventArgs e)
@@ -309,6 +318,43 @@ namespace AcsessSCCO
 
             }
             else MessageBox.Show("Не найдет файл справки");
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            MsQuery.Query.RunEdit(string.Format("Update [Assets] set {0} = '{1}' where AssetsID = '{2}'",
+                       dataGridView1.Columns[e.ColumnIndex].Name,
+                       dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value,
+                       dataGridView1.Rows[e.RowIndex].Cells[0].Value));
+              
+        }
+
+        private void типыАктивовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormCatalog fc = new FormCatalog("TypeAssets");
+            if (fc.ShowDialog() == DialogResult.OK )
+                toolStripButtonRefresh_Click(sender, e);
+        }
+
+        private void местоположенияАктивовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormCatalog fc = new FormCatalog("Location");
+            if (fc.ShowDialog() == DialogResult.OK)
+                toolStripButtonRefresh_Click(sender, e);
+        }
+
+        private void статусыАктивовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormCatalog fc = new FormCatalog("AssetsStatus");
+            if (fc.ShowDialog() == DialogResult.OK)
+                toolStripButtonRefresh_Click(sender, e);
+        }
+
+        private void действияСАктивамиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormCatalog fc = new FormCatalog("Moves");
+            if (fc.ShowDialog() == DialogResult.OK)
+                toolStripButtonRefresh_Click(sender, e);
         }
     }
 }

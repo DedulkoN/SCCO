@@ -214,24 +214,28 @@
             this.типыАктивовToolStripMenuItem.Name = "типыАктивовToolStripMenuItem";
             this.типыАктивовToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.типыАктивовToolStripMenuItem.Text = "Типы активов";
+            this.типыАктивовToolStripMenuItem.Click += new System.EventHandler(this.типыАктивовToolStripMenuItem_Click);
             // 
             // местоположенияАктивовToolStripMenuItem
             // 
             this.местоположенияАктивовToolStripMenuItem.Name = "местоположенияАктивовToolStripMenuItem";
             this.местоположенияАктивовToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.местоположенияАктивовToolStripMenuItem.Text = "Местоположения активов";
+            this.местоположенияАктивовToolStripMenuItem.Click += new System.EventHandler(this.местоположенияАктивовToolStripMenuItem_Click);
             // 
             // статусыАктивовToolStripMenuItem
             // 
             this.статусыАктивовToolStripMenuItem.Name = "статусыАктивовToolStripMenuItem";
             this.статусыАктивовToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.статусыАктивовToolStripMenuItem.Text = "Статусы активов";
+            this.статусыАктивовToolStripMenuItem.Click += new System.EventHandler(this.статусыАктивовToolStripMenuItem_Click);
             // 
             // действияСАктивамиToolStripMenuItem
             // 
             this.действияСАктивамиToolStripMenuItem.Name = "действияСАктивамиToolStripMenuItem";
             this.действияСАктивамиToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.действияСАктивамиToolStripMenuItem.Text = "Действия с активами";
+            this.действияСАктивамиToolStripMenuItem.Click += new System.EventHandler(this.действияСАктивамиToolStripMenuItem_Click);
             // 
             // панельАдминистратораToolStripMenuItem
             // 
@@ -260,6 +264,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridView1.Size = new System.Drawing.Size(732, 318);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             // 
             // FormMain
             // 

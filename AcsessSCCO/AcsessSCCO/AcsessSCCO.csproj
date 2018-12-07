@@ -106,11 +106,17 @@
     <EmbeddedResource Include="FormAdminPanel.resx">
       <DependentUpon>FormAdminPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormCatalog.resx">
+      <DependentUpon>FormCatalog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMoves.resx">
+      <DependentUpon>FormMoves.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
