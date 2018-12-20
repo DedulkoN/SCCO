@@ -14,6 +14,14 @@ LocationID [smallint] NOT NULL IDENTITY(1,1) PRIMARY KEY,
 NameLocation [varchar](128) Not NULL
 )
 go
+Create table Sotrudnik
+(
+SotrID [smallint] NOT NULL IDENTITY(1,1) PRIMARY KEY,
+FIO [varchar](128) Not NULL,
+Location [smallint] REFERENCES Location(LocationID),
+)
+
+go
 Create table AssetsStatus
 (
 AssetsStatusID [smallint] NOT NULL IDENTITY(1,1) PRIMARY KEY,
@@ -24,7 +32,7 @@ create table Assets
 (
 	AssetsID [smallint] NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	TypeAssets [smallint] REFERENCES TypeAssets(TypeAssetsID),
-	Location [smallint] REFERENCES Location(LocationID),
+	Sotrudnik [smallint] REFERENCES Sotrudnik(SotrID),
 	AssetsStatus [smallint] REFERENCES AssetsStatus(AssetsStatusID),	
 	InventoryNumber	 [varchar](32) Not NULL,
 	Info [varchar](128)  NULL
@@ -59,4 +67,12 @@ Moves [smallint] REFERENCES Moves(MovesID),
 DateMoves [Date] Not null,
 UserWhyMove [smallint] REFERENCES Users(UsersID),
 Assets [smallint] REFERENCES Assets(AssetsID),
+)
+go
+Create table UserLog
+(
+ID [smallint] NOT NULL IDENTITY(1,1) PRIMARY KEY,
+UserID [smallint] REFERENCES Users(UsersID),
+UserLog [varchar](128) Not NULL,
+DateLog [DateTime] Not null,
 )
