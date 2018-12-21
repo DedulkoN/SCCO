@@ -49,7 +49,10 @@
             this.местоположенияАктивовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.статусыАктивовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.действияСАктивамиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сотрудникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.панельАдминистратораToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.управлениеУчетнымиЗаписямиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.прсмотриПользовательскихЛоговToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.toolStrip1.SuspendLayout();
@@ -204,10 +207,12 @@
             this.типыАктивовToolStripMenuItem,
             this.местоположенияАктивовToolStripMenuItem,
             this.статусыАктивовToolStripMenuItem,
-            this.действияСАктивамиToolStripMenuItem});
+            this.действияСАктивамиToolStripMenuItem,
+            this.сотрудникиToolStripMenuItem});
             this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
             this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.справочникиToolStripMenuItem.Text = "Справочники";
+            this.справочникиToolStripMenuItem.Click += new System.EventHandler(this.справочникиToolStripMenuItem_Click);
             // 
             // типыАктивовToolStripMenuItem
             // 
@@ -237,12 +242,36 @@
             this.действияСАктивамиToolStripMenuItem.Text = "Действия с активами";
             this.действияСАктивамиToolStripMenuItem.Click += new System.EventHandler(this.действияСАктивамиToolStripMenuItem_Click);
             // 
+            // сотрудникиToolStripMenuItem
+            // 
+            this.сотрудникиToolStripMenuItem.Name = "сотрудникиToolStripMenuItem";
+            this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.сотрудникиToolStripMenuItem.Text = "Сотрудники";
+            this.сотрудникиToolStripMenuItem.Click += new System.EventHandler(this.сотрудникиToolStripMenuItem_Click);
+            // 
             // панельАдминистратораToolStripMenuItem
             // 
+            this.панельАдминистратораToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.управлениеУчетнымиЗаписямиToolStripMenuItem,
+            this.прсмотриПользовательскихЛоговToolStripMenuItem});
             this.панельАдминистратораToolStripMenuItem.Name = "панельАдминистратораToolStripMenuItem";
-            this.панельАдминистратораToolStripMenuItem.Size = new System.Drawing.Size(154, 20);
-            this.панельАдминистратораToolStripMenuItem.Text = "Панель администратора";
+            this.панельАдминистратораToolStripMenuItem.Size = new System.Drawing.Size(134, 20);
+            this.панельАдминистратораToolStripMenuItem.Text = "Администрирование";
             this.панельАдминистратораToolStripMenuItem.Click += new System.EventHandler(this.панельАдминистратораToolStripMenuItem_Click);
+            // 
+            // управлениеУчетнымиЗаписямиToolStripMenuItem
+            // 
+            this.управлениеУчетнымиЗаписямиToolStripMenuItem.Name = "управлениеУчетнымиЗаписямиToolStripMenuItem";
+            this.управлениеУчетнымиЗаписямиToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
+            this.управлениеУчетнымиЗаписямиToolStripMenuItem.Text = "Управление учетными записями";
+            this.управлениеУчетнымиЗаписямиToolStripMenuItem.Click += new System.EventHandler(this.управлениеУчетнымиЗаписямиToolStripMenuItem_Click);
+            // 
+            // прсмотриПользовательскихЛоговToolStripMenuItem
+            // 
+            this.прсмотриПользовательскихЛоговToolStripMenuItem.Name = "прсмотриПользовательскихЛоговToolStripMenuItem";
+            this.прсмотриПользовательскихЛоговToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
+            this.прсмотриПользовательскихЛоговToolStripMenuItem.Text = "Прсмотри пользовательских логов";
+            this.прсмотриПользовательскихЛоговToolStripMenuItem.Click += new System.EventHandler(this.прсмотриПользовательскихЛоговToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -313,6 +342,9 @@
         private System.Windows.Forms.ToolStripComboBox TypeFilter;
         private System.Windows.Forms.ToolStripComboBox Filter;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem управлениеУчетнымиЗаписямиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem прсмотриПользовательскихЛоговToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сотрудникиToolStripMenuItem;
     }
 }
 

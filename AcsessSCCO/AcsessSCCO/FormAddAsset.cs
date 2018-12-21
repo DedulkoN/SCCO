@@ -12,9 +12,11 @@ namespace AcsessSCCO
 {
     public partial class FormAddAsset : Form
     {
-        public FormAddAsset()
+        int UserID;
+        public FormAddAsset(int userid)
         {
             InitializeComponent();
+            UserID = userid;
 
             DataTable dtType = new DataTable();
             dtType = MsQuery.Query.RunSelect("SELECT  [TypeAssetsID], [NameAssets]  FROM [TypeAssets]");
@@ -60,6 +62,7 @@ namespace AcsessSCCO
                 )))
             {
                 MessageBox.Show("Успешно добавлено");
+                Logger.inLog("Добавление записи в Assets ", UserID);
                 this.DialogResult = DialogResult.OK;
             }
             else

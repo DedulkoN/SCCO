@@ -12,12 +12,15 @@ namespace AcsessSCCO
 {
     public partial class FormCatalog : Form
     {
+       
 
         private string TableName;
-        public FormCatalog(string tableCatalog)
+        int UserID;
+        public FormCatalog(string tableCatalog, int userid)
         {
             InitializeComponent();
             TableName = tableCatalog;
+            UserID = userid;
             LoadData();
         }
 
@@ -48,6 +51,26 @@ namespace AcsessSCCO
                 case "Moves":
                     dataGridView1.Columns[1].HeaderText = "Наименование типа изменения актива";
                     break;
+                case "Sotrudnik":
+                    dataGridView1.Columns[1].HeaderText = "ФИО сотрудника";
+
+                    DataTable dtLocality = new DataTable();
+                    dtLocality = MsQuery.Query.RunSelect("SELECT [LocationID],[NameLocation]  FROM [Location]");
+
+                    DataGridViewComboBoxColumn cbLoc = new DataGridViewComboBoxColumn();
+                    cbLoc.DataSource = dtLocality;
+                    cbLoc.DisplayMember = "NameLocation";
+                    cbLoc.ValueMember = "LocationID";
+                    cbLoc.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
+                    dataGridView1.Columns.Remove("Location");
+                    dataGridView1.Columns.Insert(2, cbLoc);
+                    dataGridView1.Columns[2].DataPropertyName = "Location";
+                    dataGridView1.Columns[2].Name = dataTable.Columns[2].ColumnName;
+                    dataGridView1.Columns[2].HeaderText = "Отдел";
+                    dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    dataGridView1.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
+
+                    break;
                 default:
                     dataGridView1.Columns[1].HeaderText = "Наименование";
                     break;
@@ -67,9 +90,10 @@ namespace AcsessSCCO
                     if (MsQuery.Query.RunEdit(string.Format("delete from {1} where {2} = {0}",
                         dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value,
                         TableName,
-                        dataGridView1.Columns[dataGridView1.CurrentCell.ColumnIndex].Name)))
+                        dataGridView1.Columns[0].Name)))
                         MessageBox.Show("Запись удалена.");
                 toolStripButtonRefresh_Click(sender, e);
+                Logger.inLog("del in " + TableName, UserID);
 
             }
             catch { }
@@ -77,7 +101,15 @@ namespace AcsessSCCO
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
-            MsQuery.Query.RunEdit(string.Format("Insert into {0} values(' ')", TableName));
+            if (TableName != "Sotrudnik")
+            {
+                MsQuery.Query.RunEdit(string.Format("Insert into {0} values(' ')", TableName));
+            }
+            else
+            {
+                MsQuery.Query.RunEdit(string.Format("Insert into {0} values(' ', null)", TableName));
+            }
+            Logger.inLog("ADD in " + TableName, UserID);
             LoadData();
         }
 
@@ -90,6 +122,7 @@ namespace AcsessSCCO
                       TableName,
                       dataGridView1.Columns[0].Name
                       ));
+            Logger.inLog("Edit in " + TableName, UserID);
         }
 
         private void FormCatalog_FormClosed(object sender, FormClosedEventArgs e)

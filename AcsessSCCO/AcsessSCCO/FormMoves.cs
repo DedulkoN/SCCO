@@ -92,6 +92,7 @@ namespace AcsessSCCO
                         dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells["MovesAssetsID"].Value)))
                         MessageBox.Show("Запись удалена.");
                 toolStripButtonRefresh_Click(sender, e);
+                Logger.inLog("del in MovesAssets ", UserID);
 
             }
             catch { }
@@ -105,6 +106,7 @@ namespace AcsessSCCO
                     if (MsQuery.Query.RunEdit(string.Format("Insert into MovesAssets values(1, '{2}', {0}, {1})",
                         UserID, AssetId, DateTime.Now.ToShortDateString())))
                         MessageBox.Show("Запись Добавлена.");
+                Logger.inLog("ADD in MovesAssets ", UserID);
                 toolStripButtonRefresh_Click(sender, e);
 
             }
@@ -117,6 +119,7 @@ namespace AcsessSCCO
                       dataGridView1.Columns[e.ColumnIndex].Name,
                       dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value,
                       dataGridView1.Rows[e.RowIndex].Cells[0].Value));
+            Logger.inLog("edit in MovesAssets ", UserID);
         }
     }
 }

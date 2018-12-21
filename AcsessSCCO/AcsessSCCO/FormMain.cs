@@ -31,12 +31,14 @@ namespace AcsessSCCO
                 UserRoleID = FL.UserRole;
                 UserID = FL.UserID;
                 FL.Dispose();
+                Logger.inLog("Вход", UserID);
 
             }
             else {
 
                 FL.Dispose();
                 Application.Exit();
+                this.Close();
             }
            
             
@@ -52,7 +54,9 @@ namespace AcsessSCCO
         private void LoadData(String Filter = "")
         {
             DataTable dtAsset = new DataTable();
-            dtAsset = MsQuery.Query.RunSelect("SELECT [AssetsID],[TypeAssets], [Location], [AssetsStatus] ,[InventoryNumber],[Info]  FROM [Assets] " 
+            dtAsset = MsQuery.Query.RunSelect("SELECT [AssetsID],[TypeAssets],[Sotrudnik] ,[AssetsStatus] ,[InventoryNumber] ,[Info], NameLocation "+
+                "FROM[CSSO].[dbo].[Assets] inner join Sotrudnik on SotrID = [Assets].Sotrudnik "+
+                "inner join Location on Sotrudnik.Location = Location.LocationID " 
                 + Filter);
 
             DataTable dtType = new DataTable();
@@ -63,6 +67,9 @@ namespace AcsessSCCO
 
             DataTable dtLocation = new DataTable();
             dtLocation = MsQuery.Query.RunSelect("SELECT [LocationID],[NameLocation]  FROM [Location]");
+
+            DataTable dtSotr = new DataTable();
+            dtSotr = MsQuery.Query.RunSelect("SELECT [SotrID],[FIO]  FROM [Sotrudnik]");
 
             dataGridView1.DataSource = dtAsset;
 
@@ -84,15 +91,15 @@ namespace AcsessSCCO
 
 
             DataGridViewComboBoxColumn cbLoc = new DataGridViewComboBoxColumn();
-            cbLoc.DataSource = dtLocation;
-            cbLoc.DisplayMember = "NameLocation";
-            cbLoc.ValueMember = "LocationID";
+            cbLoc.DataSource = dtSotr;
+            cbLoc.DisplayMember = "FIO";
+            cbLoc.ValueMember = "SotrID";
             cbLoc.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
-            dataGridView1.Columns.Remove("Location");
+            dataGridView1.Columns.Remove("Sotrudnik");
             dataGridView1.Columns.Insert(2, cbLoc);
-            dataGridView1.Columns[2].DataPropertyName = "Location";
+            dataGridView1.Columns[2].DataPropertyName = "Sotrudnik";
             dataGridView1.Columns[2].Name = dtAsset.Columns[2].ColumnName;
-            dataGridView1.Columns[2].HeaderText = "Местоположение";
+            dataGridView1.Columns[2].HeaderText = "Ответственный сотрудник";
             dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
 
@@ -119,7 +126,12 @@ namespace AcsessSCCO
             dataGridView1.Columns[5].Name = dtAsset.Columns[5].ColumnName;
             dataGridView1.Columns[5].HeaderText = "Дополнительная информация";
             dataGridView1.Columns[5].MinimumWidth = 150;
-            dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;     
+            dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            dataGridView1.Columns[6].Name = dtAsset.Columns[6].ColumnName;
+            dataGridView1.Columns[6].HeaderText = "Отдел";
+            dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns[6].ReadOnly = true;
         }
 
         private void toolStripButtonRefresh_Click(object sender, EventArgs e)
@@ -247,7 +259,7 @@ namespace AcsessSCCO
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
-            FormAddAsset formAdd = new FormAddAsset();
+            FormAddAsset formAdd = new FormAddAsset(UserID);
             if (formAdd.ShowDialog() == DialogResult.OK)
                 toolStripButtonRefresh_Click(sender, e);
         }
@@ -261,6 +273,7 @@ namespace AcsessSCCO
                         dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells["AssetsID"].Value)))
                         MessageBox.Show("Запись удалена.");
                 toolStripButtonRefresh_Click(sender, e);
+                Logger.inLog("Удаление записи из Assets", UserID);
 
             }
             catch { }
@@ -282,8 +295,7 @@ namespace AcsessSCCO
 
         private void панельАдминистратораToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormAdminPanel FA = new FormAdminPanel();
-            FA.Show();
+           
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -326,35 +338,60 @@ namespace AcsessSCCO
                        dataGridView1.Columns[e.ColumnIndex].Name,
                        dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value,
                        dataGridView1.Rows[e.RowIndex].Cells[0].Value));
-              
+            Logger.inLog("Редактирование записи id =" + dataGridView1.Rows[e.RowIndex].Cells[0].Value + " из Assets", UserID);
+
         }
 
         private void типыАктивовToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormCatalog fc = new FormCatalog("TypeAssets");
+            FormCatalog fc = new FormCatalog("TypeAssets", UserID);
             if (fc.ShowDialog() == DialogResult.OK )
                 toolStripButtonRefresh_Click(sender, e);
         }
 
         private void местоположенияАктивовToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormCatalog fc = new FormCatalog("Location");
+            FormCatalog fc = new FormCatalog("Location", UserID);
             if (fc.ShowDialog() == DialogResult.OK)
                 toolStripButtonRefresh_Click(sender, e);
         }
 
         private void статусыАктивовToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormCatalog fc = new FormCatalog("AssetsStatus");
+            FormCatalog fc = new FormCatalog("AssetsStatus", UserID);
             if (fc.ShowDialog() == DialogResult.OK)
                 toolStripButtonRefresh_Click(sender, e);
         }
 
         private void действияСАктивамиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormCatalog fc = new FormCatalog("Moves");
+            FormCatalog fc = new FormCatalog("Moves", UserID);
             if (fc.ShowDialog() == DialogResult.OK)
                 toolStripButtonRefresh_Click(sender, e);
+        }
+
+        private void управлениеУчетнымиЗаписямиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAdminPanel FA = new FormAdminPanel();
+            FA.Show();
+        }
+
+        private void справочникиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void сотрудникиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormCatalog fc = new FormCatalog("Sotrudnik", UserID);
+            if (fc.ShowDialog() == DialogResult.OK)
+                toolStripButtonRefresh_Click(sender, e);
+        }
+
+        private void прсмотриПользовательскихЛоговToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUserLog fu = new FormUserLog();
+            fu.Show();
         }
     }
 }

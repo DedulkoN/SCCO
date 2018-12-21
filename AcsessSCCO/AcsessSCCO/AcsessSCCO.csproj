@@ -90,6 +90,13 @@
     <Compile Include="FormMoves.Designer.cs">
       <DependentUpon>FormMoves.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUserLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUserLog.Designer.cs">
+      <DependentUpon>FormUserLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logger.cs" />
     <Compile Include="MsSQLqery.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -117,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMoves.resx">
       <DependentUpon>FormMoves.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUserLog.resx">
+      <DependentUpon>FormUserLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
