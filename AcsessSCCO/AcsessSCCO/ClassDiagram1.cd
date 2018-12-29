@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AcsessSCCO.FormAddAsset">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAACAAARIBAAyAAhgCAAAAAAAAAAAAABAgAAA=</HashCode>
+      <FileName>FormAddAsset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AcsessSCCO.ClassCipler">
+    <Position X="0.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>ClassCipler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AcsessSCCO.FormAdminPanel">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAEIQAEAACAQABAQgEiAAgADEAgAAAAAQCAAIQAAQAA=</HashCode>
+      <FileName>FormAdminPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AcsessSCCO.FormCatalog">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAUAACAQAAAAgECAAAgDEAgAAAAAAAAACQAAQAA=</HashCode>
+      <FileName>FormCatalog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AcsessSCCO.FormLogin">
+    <Position X="2.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAACAAABAAAACAAAgCAAAIAAgAAUAAAAAAAAA=</HashCode>
+      <FileName>FormLogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AcsessSCCO.FormMain">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>KQgVQC8AgSIRgAACiEKYACgDlJiAAIACAAACAkIYQAA=</HashCode>
+      <FileName>FormMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AcsessSCCO.FormMoves">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAASQI0AACAQAAAggEDAAAgDEggAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>FormMoves.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AcsessSCCO.FormUserLog">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEABCAQAAAAIECAAEACAAgAABAIACAAAAAACAg=</HashCode>
+      <FileName>FormUserLog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AcsessSCCO.Logger">
+    <Position X="0.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Logger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AcsessSCCO.MsSQLqery">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEEIAAAAIAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>MsSQLqery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AcsessSCCO.MsQuery">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>MsSQLqery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AcsessSCCO.ClassSetting">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MsSQLqery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AcsessSCCO.Print">
+    <Position X="2.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Print.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AcsessSCCO.Program">
+    <Position X="0.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
