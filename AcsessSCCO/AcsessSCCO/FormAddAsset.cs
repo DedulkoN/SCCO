@@ -25,7 +25,7 @@ namespace AcsessSCCO
             dtAssetsStatus = MsQuery.Query.RunSelect("SELECT [AssetsStatusID], [NameAssetsStatus]  FROM [AssetsStatus]");
 
             DataTable dtLocation = new DataTable();
-            dtLocation = MsQuery.Query.RunSelect("SELECT [LocationID],[NameLocation]  FROM [Location]");
+            dtLocation = MsQuery.Query.RunSelect("SELECT [SotrID],[FIO]  FROM Sotrudnik");
 
             comboBoxType.DataSource = dtType;
             comboBoxType.DisplayMember = "NameAssets";
@@ -36,8 +36,8 @@ namespace AcsessSCCO
             comboBoxStatys.ValueMember = "AssetsStatusID";
 
             comboBoxLocality.DataSource = dtLocation;
-            comboBoxLocality.DisplayMember = "NameLocation";
-            comboBoxLocality.ValueMember = "LocationID";
+            comboBoxLocality.DisplayMember = "FIO";
+            comboBoxLocality.ValueMember = "SotrID";
 
         }
 

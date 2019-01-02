@@ -65,7 +65,7 @@
             this.toolStripButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAdd.Name = "toolStripButtonAdd";
             this.toolStripButtonAdd.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonAdd.Text = "toolStripButton1";
+            this.toolStripButtonAdd.Text = "Добавить запись";
             this.toolStripButtonAdd.Click += new System.EventHandler(this.toolStripButtonAdd_Click);
             // 
             // toolStripButtonDel
@@ -75,7 +75,7 @@
             this.toolStripButtonDel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonDel.Name = "toolStripButtonDel";
             this.toolStripButtonDel.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonDel.Text = "toolStripButton2";
+            this.toolStripButtonDel.Text = "Удалить запись";
             this.toolStripButtonDel.Click += new System.EventHandler(this.toolStripButtonDel_Click);
             // 
             // toolStripSeparator1
@@ -90,7 +90,7 @@
             this.toolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonRefresh.Name = "toolStripButtonRefresh";
             this.toolStripButtonRefresh.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonRefresh.Text = "toolStripButton3";
+            this.toolStripButtonRefresh.Text = "Обновить запись";
             this.toolStripButtonRefresh.Click += new System.EventHandler(this.toolStripButtonRefresh_Click);
             // 
             // toolStripSeparator2
@@ -105,7 +105,7 @@
             this.toolStripButtonWord.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonWord.Name = "toolStripButtonWord";
             this.toolStripButtonWord.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonWord.Text = "toolStripButton4";
+            this.toolStripButtonWord.Text = "Экспорт в MS Word";
             this.toolStripButtonWord.Click += new System.EventHandler(this.toolStripButtonWord_Click);
             // 
             // toolStripButtonExcel
@@ -115,7 +115,7 @@
             this.toolStripButtonExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonExcel.Name = "toolStripButtonExcel";
             this.toolStripButtonExcel.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonExcel.Text = "toolStripButton5";
+            this.toolStripButtonExcel.Text = "Экспорт в MS Excel";
             this.toolStripButtonExcel.Click += new System.EventHandler(this.toolStripButtonExcel_Click);
             // 
             // dataGridView1

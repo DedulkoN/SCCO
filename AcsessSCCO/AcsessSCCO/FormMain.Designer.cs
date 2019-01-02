@@ -144,7 +144,7 @@
             this.toolStripButtonToExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonToExcel.Name = "toolStripButtonToExcel";
             this.toolStripButtonToExcel.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonToExcel.Text = "toolStripButton1";
+            this.toolStripButtonToExcel.Text = "Экспорт в MS Excel";
             this.toolStripButtonToExcel.Click += new System.EventHandler(this.toolStripButtonToExcel_Click);
             // 
             // toolStripButtonToWord
@@ -154,7 +154,7 @@
             this.toolStripButtonToWord.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonToWord.Name = "toolStripButtonToWord";
             this.toolStripButtonToWord.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonToWord.Text = "toolStripButton1";
+            this.toolStripButtonToWord.Text = "Экспорт в MS Word";
             this.toolStripButtonToWord.Click += new System.EventHandler(this.toolStripButtonToWord_Click);
             // 
             // toolStripSeparator4
@@ -262,15 +262,15 @@
             // управлениеУчетнымиЗаписямиToolStripMenuItem
             // 
             this.управлениеУчетнымиЗаписямиToolStripMenuItem.Name = "управлениеУчетнымиЗаписямиToolStripMenuItem";
-            this.управлениеУчетнымиЗаписямиToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
+            this.управлениеУчетнымиЗаписямиToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.управлениеУчетнымиЗаписямиToolStripMenuItem.Text = "Управление учетными записями";
             this.управлениеУчетнымиЗаписямиToolStripMenuItem.Click += new System.EventHandler(this.управлениеУчетнымиЗаписямиToolStripMenuItem_Click);
             // 
             // прсмотриПользовательскихЛоговToolStripMenuItem
             // 
             this.прсмотриПользовательскихЛоговToolStripMenuItem.Name = "прсмотриПользовательскихЛоговToolStripMenuItem";
-            this.прсмотриПользовательскихЛоговToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
-            this.прсмотриПользовательскихЛоговToolStripMenuItem.Text = "Прсмотри пользовательских логов";
+            this.прсмотриПользовательскихЛоговToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.прсмотриПользовательскихЛоговToolStripMenuItem.Text = "Прсмотр пользовательских логов";
             this.прсмотриПользовательскихЛоговToolStripMenuItem.Click += new System.EventHandler(this.прсмотриПользовательскихЛоговToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
