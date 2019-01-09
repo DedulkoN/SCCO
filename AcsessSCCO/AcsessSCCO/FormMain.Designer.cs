@@ -262,15 +262,15 @@
             // управлениеУчетнымиЗаписямиToolStripMenuItem
             // 
             this.управлениеУчетнымиЗаписямиToolStripMenuItem.Name = "управлениеУчетнымиЗаписямиToolStripMenuItem";
-            this.управлениеУчетнымиЗаписямиToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.управлениеУчетнымиЗаписямиToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
             this.управлениеУчетнымиЗаписямиToolStripMenuItem.Text = "Управление учетными записями";
             this.управлениеУчетнымиЗаписямиToolStripMenuItem.Click += new System.EventHandler(this.управлениеУчетнымиЗаписямиToolStripMenuItem_Click);
             // 
             // прсмотриПользовательскихЛоговToolStripMenuItem
             // 
             this.прсмотриПользовательскихЛоговToolStripMenuItem.Name = "прсмотриПользовательскихЛоговToolStripMenuItem";
-            this.прсмотриПользовательскихЛоговToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
-            this.прсмотриПользовательскихЛоговToolStripMenuItem.Text = "Прсмотр пользовательских логов";
+            this.прсмотриПользовательскихЛоговToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
+            this.прсмотриПользовательскихЛоговToolStripMenuItem.Text = "Просмотр пользовательских логов";
             this.прсмотриПользовательскихЛоговToolStripMenuItem.Click += new System.EventHandler(this.прсмотриПользовательскихЛоговToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
