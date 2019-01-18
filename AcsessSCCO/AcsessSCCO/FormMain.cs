@@ -87,7 +87,7 @@ namespace AcsessSCCO
             dataGridView1.Columns[1].Name = dtAsset.Columns[1].ColumnName;
             dataGridView1.Columns[1].HeaderText = "Тип актива";
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridView1.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
+            dataGridView1.Columns[1].SortMode = DataGridViewColumnSortMode.Automatic;
 
 
             DataGridViewComboBoxColumn cbLoc = new DataGridViewComboBoxColumn();
@@ -101,7 +101,7 @@ namespace AcsessSCCO
             dataGridView1.Columns[2].Name = dtAsset.Columns[2].ColumnName;
             dataGridView1.Columns[2].HeaderText = "Ответственный сотрудник";
             dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridView1.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
+            dataGridView1.Columns[2].SortMode = DataGridViewColumnSortMode.Automatic;
 
 
 
@@ -116,7 +116,7 @@ namespace AcsessSCCO
             dataGridView1.Columns[3].Name = dtAsset.Columns[3].ColumnName;
             dataGridView1.Columns[3].HeaderText = "Статус";
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridView1.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
+            dataGridView1.Columns[3].SortMode = DataGridViewColumnSortMode.Automatic;
 
 
             dataGridView1.Columns[4].Name = dtAsset.Columns[4].ColumnName;
@@ -155,6 +155,12 @@ namespace AcsessSCCO
                     int AssetsStatusID = Convert.ToInt32(MsQuery.Query.RunCalc(string.Format("SELECT max(AssetsStatusID)  FROM [AssetsStatus] where NameAssetsStatus = '{0}'", Filter.SelectedItem.ToString())));
                     LoadData(string.Format(" where AssetsStatus = {0}", AssetsStatusID));
                     break;
+                case 5:
+                    int SotrId = Convert.ToInt32(MsQuery.Query.RunCalc(string.Format("SELECT max([SotrID]) FROM [Sotrudnik] where FIO = '{0}'", Filter.SelectedItem.ToString())));
+                    LoadData(string.Format(" where [Sotrudnik] = {0}", SotrId));
+                    break;
+
+
                 default:
                     LoadData();
                     break;
@@ -205,6 +211,15 @@ namespace AcsessSCCO
                     Filter.Items.Clear();
                     Filter.DropDownStyle = ComboBoxStyle.DropDown;
                     break;
+                case 5:
+                    Filter.Visible = true;
+                    DataTable dtsotr = new DataTable();
+                    dtsotr = MsQuery.Query.RunSelect("SELECT [SotrID] ,[FIO]  FROM [Sotrudnik]");
+                    Filter.Items.Clear();
+                    foreach (DataRow DR in dtsotr.Rows)
+                        Filter.Items.Add(DR["FIO"].ToString());
+                    Filter.DropDownStyle = ComboBoxStyle.DropDownList;
+                    break;                   
 
 
             }
@@ -241,7 +256,11 @@ namespace AcsessSCCO
                 case 3:
                     int AssetsStatusID = Convert.ToInt32(MsQuery.Query.RunCalc(string.Format("SELECT max(AssetsStatusID)  FROM [AssetsStatus] where NameAssetsStatus = '{0}'", Filter.SelectedItem.ToString())));
                     LoadData( string.Format(" where AssetsStatus = {0}", AssetsStatusID));               
-                    break;             
+                    break;
+                case 5:
+                    int SotrId = Convert.ToInt32(MsQuery.Query.RunCalc(string.Format("SELECT max([SotrID]) FROM [Sotrudnik] where FIO = '{0}'", Filter.SelectedItem.ToString())));
+                    LoadData(string.Format(" where [Sotrudnik] = {0}", SotrId));
+                    break;
 
 
             }

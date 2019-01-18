@@ -176,7 +176,8 @@
             "Тип актива",
             "Местоположение",
             "Статус",
-            "Инвентарный номер"});
+            "Инвентарный номер",
+            "Сотрудник"});
             this.TypeFilter.Name = "TypeFilter";
             this.TypeFilter.Size = new System.Drawing.Size(121, 25);
             this.TypeFilter.SelectedIndexChanged += new System.EventHandler(this.TypeFilter_SelectedIndexChanged);

@@ -27,40 +27,44 @@ namespace AcsessSCCO
 
         private void LoadData()
         {
-            DataTable dtUsers;
-            dtUsers = MsQuery.Query.RunSelect("SELECT [UsersID],[UserLogin],[UserPassword],[RolesUser],[FIO]  FROM Users");
-            DataTable dtRole = new DataTable();
-            dtRole = MsQuery.Query.RunSelect("SELECT [RoleUserID],[NameRoleUser]  FROM [RoleUsers]");
+            try
+            {
+                DataTable dtUsers;
+                dtUsers = MsQuery.Query.RunSelect("SELECT [UsersID],[UserLogin],[UserPassword],[RolesUser],[FIO]  FROM Users");
+                DataTable dtRole = new DataTable();
+                dtRole = MsQuery.Query.RunSelect("SELECT [RoleUserID],[NameRoleUser]  FROM [RoleUsers]");
 
-            dataGridView1.DataSource = dtUsers;
+                dataGridView1.DataSource = dtUsers;
 
-            dataGridView1.Columns["UsersID"].Visible = false;
+                dataGridView1.Columns["UsersID"].Visible = false;
 
-            dataGridView1.Columns[1].Name = dtUsers.Columns[1].ColumnName;
-            dataGridView1.Columns[1].HeaderText = "Логин";
-            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dataGridView1.Columns[1].Name = dtUsers.Columns[1].ColumnName;
+                dataGridView1.Columns[1].HeaderText = "Логин";
+                dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-            dataGridView1.Columns[2].Name = dtUsers.Columns[2].ColumnName;
-            dataGridView1.Columns[2].HeaderText = "Пароль(Защифрованный)";
-            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                dataGridView1.Columns[2].Name = dtUsers.Columns[2].ColumnName;
+                dataGridView1.Columns[2].HeaderText = "Пароль(Защифрованный)";
+                dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
 
-            DataGridViewComboBoxColumn cbRole = new DataGridViewComboBoxColumn();
-            cbRole.DataSource = dtRole;
-            cbRole.DisplayMember = "NameRoleUser";
-            cbRole.ValueMember = "RoleUserID";
-            cbRole.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
-            dataGridView1.Columns.Remove("RolesUser");
-            dataGridView1.Columns.Insert(3, cbRole);
-            dataGridView1.Columns[3].DataPropertyName = "RolesUser";
-            dataGridView1.Columns[3].Name = dtUsers.Columns[3].ColumnName;
-            dataGridView1.Columns[3].HeaderText = "Роль пользователя";
-            dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridView1.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
+                DataGridViewComboBoxColumn cbRole = new DataGridViewComboBoxColumn();
+                cbRole.DataSource = dtRole;
+                cbRole.DisplayMember = "NameRoleUser";
+                cbRole.ValueMember = "RoleUserID";
+                cbRole.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
+                dataGridView1.Columns.Remove("RolesUser");
+                dataGridView1.Columns.Insert(3, cbRole);
+                dataGridView1.Columns[3].DataPropertyName = "RolesUser";
+                dataGridView1.Columns[3].Name = dtUsers.Columns[3].ColumnName;
+                dataGridView1.Columns[3].HeaderText = "Роль пользователя";
+                dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dataGridView1.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
 
-            dataGridView1.Columns[4].Name = dtUsers.Columns[4].ColumnName;
-            dataGridView1.Columns[4].HeaderText = "ФИО пользователя";
-            dataGridView1.Columns[4].MinimumWidth = 100;
-            dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[4].Name = dtUsers.Columns[4].ColumnName;
+                dataGridView1.Columns[4].HeaderText = "ФИО пользователя";
+                dataGridView1.Columns[4].MinimumWidth = 100;
+                dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+            catch { };
         }
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
@@ -117,10 +121,12 @@ namespace AcsessSCCO
                        ClassCipler.GetHashString( dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()),
                        dataGridView1.Rows[e.RowIndex].Cells[0].Value)))
                     MessageBox.Show("Запись изменена.");
-
                 LoadData();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+
+            
+          
         }
     }
 }
