@@ -46,8 +46,36 @@ namespace AcsessSCCO
 
             InitializeComponent();
             LoadData();
+            LoadTree();
             TypeFilter.SelectedIndex = 0;
             if (UserRoleID != 1) панельАдминистратораToolStripMenuItem.Visible = false;
+        }
+
+        private void LoadTree()
+        {
+            DataTable dtLocation = new DataTable();
+            dtLocation = MsQuery.Query.RunSelect("SELECT [LocationID],[NameLocation]  FROM [Location]");
+
+            DataTable dtSotr = new DataTable();
+            dtSotr = MsQuery.Query.RunSelect("SELECT [SotrID],[FIO], Location  FROM [Sotrudnik]");
+
+            treeView1.Nodes.Clear();
+
+            //работа с деревом
+            foreach (DataRow DR in dtLocation.Rows)
+            {
+                TreeNode node = new TreeNode(DR["NameLocation"].ToString());
+                foreach (DataRow row in dtSotr.Rows)
+                {
+                    if (row["Location"].ToString() == DR["LocationID"].ToString())
+                    {
+                        node.Nodes.Add(row["FIO"].ToString());
+
+                    }
+                }
+                treeView1.Nodes.Add(node);
+            }
+
         }
 
 
@@ -69,7 +97,7 @@ namespace AcsessSCCO
             dtLocation = MsQuery.Query.RunSelect("SELECT [LocationID],[NameLocation]  FROM [Location]");
 
             DataTable dtSotr = new DataTable();
-            dtSotr = MsQuery.Query.RunSelect("SELECT [SotrID],[FIO]  FROM [Sotrudnik]");
+            dtSotr = MsQuery.Query.RunSelect("SELECT [SotrID],[FIO], Location  FROM [Sotrudnik]");
 
             dataGridView1.DataSource = dtAsset;
 
@@ -132,10 +160,14 @@ namespace AcsessSCCO
             dataGridView1.Columns[6].HeaderText = "Отдел";
             dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[6].ReadOnly = true;
+
+
+            
         }
 
         private void toolStripButtonRefresh_Click(object sender, EventArgs e)
         {
+            LoadTree();
             switch (TypeFilter.SelectedIndex)
             {
                 case 1:
@@ -166,6 +198,7 @@ namespace AcsessSCCO
                     break;
 
             }
+           
         }
 
         private void TypeFilter_SelectedIndexChanged(object sender, EventArgs e)
@@ -288,9 +321,13 @@ namespace AcsessSCCO
             try
             {
                 if (dataGridView1.CurrentCell.RowIndex >= 0)
-                    if (MsQuery.Query.RunEdit(string.Format("delete from Assets where AssetsID = {0}",
-                        dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells["AssetsID"].Value)))
-                        MessageBox.Show("Запись удалена.");
+                {
+                    MsQuery.Query.RunEdit($"delete FROM [MovesAssets] where Assets = { dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells["AssetsID"].Value}");
+
+                    MsQuery.Query.RunEdit(string.Format("delete from Assets where AssetsID = {0}",
+                       dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells["AssetsID"].Value));
+                    MessageBox.Show("Запись удалена.");
+                }
                 toolStripButtonRefresh_Click(sender, e);
                 Logger.inLog("Удаление записи из Assets", UserID);
 
@@ -411,6 +448,29 @@ namespace AcsessSCCO
         {
             FormUserLog fu = new FormUserLog();
             fu.Show();
+        }
+
+        private void treeView1_DoubleClick(object sender, EventArgs e)
+        {
+            // treeView1.SelectedNode.Level отдела = 0, сутрудника = 1
+            try
+            {
+                switch (treeView1.SelectedNode.Level)
+                {
+                    case 1:
+                        int SotrId = Convert.ToInt32(MsQuery.Query.RunCalc(string.Format("SELECT max([SotrID]) FROM [Sotrudnik] where FIO = '{0}'", treeView1.SelectedNode.Text)));
+                        LoadData(string.Format(" where [Sotrudnik] = {0}", SotrId));
+                        break;
+                    case 0:
+                        int LocationID = Convert.ToInt32(MsQuery.Query.RunCalc(string.Format("SELECT max(LocationID)  FROM [Location] where NameLocation = '{0}'", treeView1.SelectedNode.Text)));
+                        LoadData(string.Format(" where Location = {0}", LocationID));
+
+                        break;
+                }
+            }
+            catch { };
+            
+
         }
     }
 }

@@ -115,7 +115,7 @@ namespace AcsessSCCO
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            MsQuery.Query.RunEdit(string.Format("Update [MovesAssets] set {0} = '{1}' where MovesAssetsID = '{2}'",
+            MsQuery.Query.RunEdit(string.Format("Update [MovesAssets] set {0} = '{1}' where MoviesAssetsID = {2}",
                       dataGridView1.Columns[e.ColumnIndex].Name,
                       dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value,
                       dataGridView1.Rows[e.RowIndex].Cells[0].Value));
