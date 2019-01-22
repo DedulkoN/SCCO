@@ -13,7 +13,7 @@ namespace AcsessSCCO
     public partial class FormMoves : Form
     {
         private int UserID = 0;
-        private int AssetId;
+        private int AssetId = 0;
         public FormMoves(int User, int Asset)
         {
             InitializeComponent();
@@ -88,29 +88,30 @@ namespace AcsessSCCO
             try
             {
                 if (dataGridView1.CurrentCell.RowIndex >= 0)
-                    if (MsQuery.Query.RunEdit(string.Format("delete from MovesAssets where MovesAssetsID = {0}",
-                        dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells["MovesAssetsID"].Value)))
+                    if (MsQuery.Query.RunEdit(string.Format("delete from MovesAssets where MoviesAssetsID = {0}",
+                        dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells["MoviesAssetsID"].Value)))
                         MessageBox.Show("Запись удалена.");
                 toolStripButtonRefresh_Click(sender, e);
                 Logger.inLog("del in MovesAssets ", UserID);
 
             }
-            catch { }
+            catch(Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                if (dataGridView1.CurrentCell.RowIndex >= 0)
-                    if (MsQuery.Query.RunEdit(string.Format("Insert into MovesAssets values(1, '{2}', {0}, {1})",
-                        UserID, AssetId, DateTime.Now.ToShortDateString())))
+               
+                    if (MsQuery.Query.RunEdit($"Insert into MovesAssets values(1, GETDATE(), {UserID}, {AssetId})"))
+                    {
                         MessageBox.Show("Запись Добавлена.");
-                Logger.inLog("ADD in MovesAssets ", UserID);
-                toolStripButtonRefresh_Click(sender, e);
+                        Logger.inLog("ADD in MovesAssets ", UserID);
+                        toolStripButtonRefresh_Click(sender, e);
+                    }
 
             }
-            catch { }
+            catch(Exception ex) { MessageBox.Show(ex.Message + Environment.NewLine + ex.StackTrace  + Environment.NewLine + ex.Source); }
         }
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)

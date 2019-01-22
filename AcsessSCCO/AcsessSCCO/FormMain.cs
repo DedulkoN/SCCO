@@ -400,28 +400,28 @@ namespace AcsessSCCO
 
         private void типыАктивовToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormCatalog fc = new FormCatalog("TypeAssets", UserID);
+            FormCatalog fc = new FormCatalog("TypeAssets", UserID, UserRoleID);
             if (fc.ShowDialog() == DialogResult.OK )
                 toolStripButtonRefresh_Click(sender, e);
         }
 
         private void местоположенияАктивовToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormCatalog fc = new FormCatalog("Location", UserID);
+            FormCatalog fc = new FormCatalog("Location", UserID, UserRoleID);
             if (fc.ShowDialog() == DialogResult.OK)
                 toolStripButtonRefresh_Click(sender, e);
         }
 
         private void статусыАктивовToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormCatalog fc = new FormCatalog("AssetsStatus", UserID);
+            FormCatalog fc = new FormCatalog("AssetsStatus", UserID, UserRoleID);
             if (fc.ShowDialog() == DialogResult.OK)
                 toolStripButtonRefresh_Click(sender, e);
         }
 
         private void действияСАктивамиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormCatalog fc = new FormCatalog("Moves", UserID);
+            FormCatalog fc = new FormCatalog("Moves", UserID, UserRoleID);
             if (fc.ShowDialog() == DialogResult.OK)
                 toolStripButtonRefresh_Click(sender, e);
         }
@@ -439,7 +439,7 @@ namespace AcsessSCCO
 
         private void сотрудникиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormCatalog fc = new FormCatalog("Sotrudnik", UserID);
+            FormCatalog fc = new FormCatalog("Sotrudnik", UserID, UserRoleID);
             if (fc.ShowDialog() == DialogResult.OK)
                 toolStripButtonRefresh_Click(sender, e);
         }

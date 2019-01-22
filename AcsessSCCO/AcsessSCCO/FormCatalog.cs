@@ -16,12 +16,14 @@ namespace AcsessSCCO
 
         private string TableName;
         int UserID;
-        public FormCatalog(string tableCatalog, int userid)
+        public FormCatalog(string tableCatalog, int userid, int userRole)
         {
             InitializeComponent();
             TableName = tableCatalog;
             UserID = userid;
             LoadData();
+            if (userRole != 1) toolStripButtonDel.Visible = false;
+
         }
 
         private void LoadData()
@@ -90,13 +92,14 @@ namespace AcsessSCCO
                     if (MsQuery.Query.RunEdit(string.Format("delete from {1} where {2} = {0}",
                         dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value,
                         TableName,
-                        dataGridView1.Columns[0].Name)))
+                        dataGridView1.Columns[0].Name), false))
                         MessageBox.Show("Запись удалена.");
                 toolStripButtonRefresh_Click(sender, e);
                 Logger.inLog("del in " + TableName, UserID);
 
             }
-            catch { }
+            catch { MessageBox.Show("Не удалось удалить запись" + Environment.NewLine 
+                + "Возможно она используеться в других таблицах, отредактируйте записи и повторите попытку вновь");  }
         }
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)

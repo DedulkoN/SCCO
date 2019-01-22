@@ -160,6 +160,11 @@ namespace AcsessSCCO
             try
             {
                 testConnection.Open();
+
+                testCommand.CommandText = string.Format("set language \'русский\'");
+                testCommand.ExecuteNonQuery();
+
+
                 testCommand.CommandText = query;
                 testCommand.ExecuteNonQuery();
                 testConnection.Close();
@@ -169,7 +174,12 @@ namespace AcsessSCCO
             {
                 //
                 if (ermsg) MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else throw;
                 return false;
+            }
+            finally
+            {
+                testConnection.Close();
             }
         }
 
