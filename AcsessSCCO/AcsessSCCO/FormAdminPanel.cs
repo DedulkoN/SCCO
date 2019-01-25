@@ -94,11 +94,14 @@ namespace AcsessSCCO
             try
             {
                 if (dataGridView1.CurrentCell.RowIndex >= 0)
+                {
+                    MsQuery.Query.RunEdit(string.Format("delete from UserLog where UserID = {0}",
+                        dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells["UsersID"].Value));
                     if (MsQuery.Query.RunEdit(string.Format("delete from Users where UsersID = {0}",
                         dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells["UsersID"].Value)))
                         MessageBox.Show("Запись удалена.");
-                LoadData();
-
+                    LoadData();
+                }
             }
             catch { }
         }
