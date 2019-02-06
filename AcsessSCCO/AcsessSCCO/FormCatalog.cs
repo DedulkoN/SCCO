@@ -24,6 +24,25 @@ namespace AcsessSCCO
             LoadData();
             if (userRole != 1) toolStripButtonDel.Visible = false;
 
+            switch (TableName)
+            {
+                case "TypeAssets":
+                    this.Text = "Справочник \"Типы активов\"";
+                    break;
+                case "Location":
+                    this.Text = "Справочник \"Местоположения активов\"";
+                    break;
+                case "AssetsStatus":
+                    this.Text = "Справочник \"Статусы активов\"";
+                    break;
+                case "Moves":
+                    this.Text = "Справочник \"Действия с активами\"";
+                    break;
+                case "Sotrudnik":
+                    this.Text = "Справочник \"Сотрудники\"";
+                    break;
+            }
+
         }
 
         private void LoadData()

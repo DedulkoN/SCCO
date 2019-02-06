@@ -78,7 +78,7 @@ namespace AcsessSCCO
                 Word.Document document = wordapp.Application.ActiveDocument;
 
 
-                wordapp.Selection.PageSetup.Orientation = Word.WdOrientation.wdOrientLandscape;
+                wordapp.Selection.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait;
                 wordapp.Selection.PageSetup.LeftMargin = wordapp.CentimetersToPoints((float)1.0);
                 Object unit = Word.WdUnits.wdStory;
                 Object extend = Word.WdMovementType.wdMove;
